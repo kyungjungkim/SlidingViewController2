@@ -1,1 +1,3 @@
-# SlidingView2
+# SlidingViewController2
+
+Simple Example
