@@ -1,9 +1,11 @@
 # SlidingViewController2
 
 Simple Example
+--------------
 
 
 License
+-------
 
 Copyright 2012-2014 Jeremy Feinstein
 
