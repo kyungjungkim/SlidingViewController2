@@ -18,22 +18,7 @@ protocol SlidingViewDelegate {
     func SlidingCellSelected(returnIndex: NSInteger) -> ()
 }
 
-class SlidingViewController: UIViewController {
-    
-    var uiTableView: UITableView?
-    var heightTableView: CGFloat = 0.0
-    var arrayData: NSArray = []
-    var heightOfCell: CGFloat = 0.0
-    var refView: UIView?
-    var paddingLeft: CGFloat = 0.0
-    var paddingRight: CGFloat = 0.0
-    var paddingTop: CGFloat = 0.0
-    var open: CGFloat = 0.0
-    var close: CGFloat = 0.0
-    var delegate: SlidingViewDelegate?
-    var type: AnimationType?
-    
-    func initWithArrayData(data: NSArray, cHeight: CGFloat, tHeightTableView: CGFloat, tPaddingTop: CGFloat, tPaddingLeft: CGFloat, tPaddingRight: CGFloat, rView: UIView, tAnimation: AnimationType, openDuration: CGFloat, closeDuration: CGFloat) -> (Any) {
+func initWithArrayData(data: NSArray, cHeight: CGFloat, tHeightTableView: CGFloat, tPaddingTop: CGFloat, tPaddingLeft: CGFloat, tPaddingRight: CGFloat, rView: UIView, tAnimation: AnimationType, openDuration: CGFloat, closeDuration: CGFloat) -> (Any) {
         
         self.arrayData = data;
             
@@ -66,6 +51,23 @@ class SlidingViewController: UIViewController {
             
         return SlidingViewController()
     }
+
+class SlidingViewController: UIViewController {
+    
+    var uiTableView: UITableView?
+    var heightTableView: CGFloat = 0.0
+    var arrayData: NSArray = []
+    var heightOfCell: CGFloat = 0.0
+    var refView: UIView?
+    var paddingLeft: CGFloat = 0.0
+    var paddingRight: CGFloat = 0.0
+    var paddingTop: CGFloat = 0.0
+    var open: CGFloat = 0.0
+    var close: CGFloat = 0.0
+    var delegate: SlidingViewDelegate?
+    var type: AnimationType?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
