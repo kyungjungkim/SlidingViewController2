@@ -18,40 +18,6 @@ protocol SlidingViewDelegate {
     func SlidingCellSelected(returnIndex: NSInteger) -> ()
 }
 
-func initWithArrayData(data: NSArray, cHeight: CGFloat, tHeightTableView: CGFloat, tPaddingTop: CGFloat, tPaddingLeft: CGFloat, tPaddingRight: CGFloat, rView: UIView, tAnimation: AnimationType, openDuration: CGFloat, closeDuration: CGFloat) -> (Any) {
-        
-        self.arrayData = data;
-            
-        self.heightOfCell = cHeight;
-            
-        self.refView = rView;
-            
-        self.paddingTop = tPaddingTop;
-            
-        self.paddingLeft = tPaddingLeft;
-            
-        self.paddingRight = tPaddingRight;
-            
-        self.heightTableView = tHeightTableView;
-            
-        self.open = openDuration;
-            
-        self.close = closeDuration;
-            
-        let refFrame: CGRect = refView!.frame;
-        
-        var frame: CGRect = self.view.frame
-        frame.origin.x = refFrame.origin.x - paddingLeft
-        frame.origin.y = refFrame.origin.y + refFrame.size.height + paddingTop
-        frame.size.width = refFrame.size.width + paddingRight
-        frame.size.height = heightTableView
-        self.view.frame = frame
-            
-        type = tAnimation;
-            
-        return SlidingViewController()
-    }
-
 class SlidingViewController: UIViewController {
     
     var uiTableView: UITableView?
@@ -72,7 +38,5 @@ class SlidingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    
+    }   
 }
