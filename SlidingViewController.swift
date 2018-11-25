@@ -40,7 +40,8 @@ class SlidingViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-     // UITableViewDelegate
+    
+    // UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return heightOfCell;
     }
