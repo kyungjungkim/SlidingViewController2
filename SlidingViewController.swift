@@ -20,7 +20,7 @@ protocol SlidingViewDelegate {
 
 class SlidingViewController: UIViewController {
     
-    var uiTableView: UITableView?
+    @IBOutlet weak var uiTableView: UITableView!
     var heightTableView: CGFloat = 0.0
     var arrayData: NSArray = []
     var heightOfCell: CGFloat = 0.0
