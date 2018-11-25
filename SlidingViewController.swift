@@ -18,7 +18,7 @@ protocol SlidingViewDelegate {
     func SlidingCellSelected(returnIndex: NSInteger) -> ()
 }
 
-class SlidingViewController: UIViewController {
+class SlidingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var uiTableView: UITableView!
     var heightTableView: CGFloat = 0.0
@@ -38,5 +38,24 @@ class SlidingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }   
+    }
+    
+     // UITableViewDelegate
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return heightOfCell;
+    }
+    
+    
+    // UITableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayData.count;
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel!.textAlignment = NSTextAlignment.left
+        cell.textLabel!.text = arrayData.object(at: indexPath.row) as? String
+        
+        return cell
+    }
 }
