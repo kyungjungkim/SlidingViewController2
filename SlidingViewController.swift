@@ -95,10 +95,32 @@ class SlidingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func closeAnimation() -> () {
-
+        UIView.animate(withDuration: 0.7, delay: 0.0, options: [.curveLinear], animations: {
+            UIView.setAnimationDuration(TimeInterval(self.close))
+            UIView.setAnimationRepeatCount(Float(1.0))
+            UIView.setAnimationDelay(TimeInterval(0))
+        }, completion: { finished in
+            
+        })
+        
+        if (type == AnimationType.BOTH || type == AnimationType.GROW) {
+            var tempFrame: CGRect = self.uiTableView.frame
+            tempFrame.origin.x = uiTableView.frame.origin.x
+            tempFrame.origin.y = uiTableView.frame.origin.y
+            tempFrame.size.width = uiTableView.frame.size.width
+            tempFrame.size.height = heightTableView
+            
+            self.uiTableView.frame = tempFrame
+        }
+        
+        if (type == AnimationType.BOTH || type == AnimationType.BLENDIN) {
+            self.view.alpha = 0;
+        }
+        
+        self.perform(#selector(hideView), with: nil, afterDelay: TimeInterval(close))
     }
     
-    func hideView() -> () {
-
+    @objc func hideView() -> () {
+        self.view.isHidden = true
     }
 }
