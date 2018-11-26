@@ -1,6 +1,5 @@
 //
 //  SlidingView.swift
-//  exercise
 //
 //  Created by Kyungjung Kim on 12/11/2018.
 //  Copyright © 2018 Kyungjung Kim. All rights reserved.
