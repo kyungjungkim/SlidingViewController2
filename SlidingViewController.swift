@@ -48,7 +48,9 @@ class SlidingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        delegate?.SlidingCellSelected(returnIndex: indexPath.row)
+        
+        self.closeAnimation()
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -76,5 +78,27 @@ class SlidingViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.textLabel!.text = arrayData.object(at: indexPath.row) as? String
         
         return cell
+    }
+    
+    
+    // SlidingViewDelegate Methods
+    
+    func SlidngViewCellSelected(returnIndex: NSInteger) -> () {
+    
+    }
+    
+    
+    // Methods
+    
+    func openAnimation() -> () {
+
+    }
+    
+    func closeAnimation() -> () {
+
+    }
+    
+    func hideView() -> () {
+
     }
 }
