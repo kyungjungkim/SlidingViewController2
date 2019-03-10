@@ -58,7 +58,7 @@
 		A1807D572234895100B8F4FF /* SlidingView */ = {
 			isa = PBXGroup;
 			children = (
-				A1807D6E22348B4200B8F4FF /* SlidingView */,
+				A1807D6E22348B4200B8F4FF /* Sliding */,
 				A1807D582234895100B8F4FF /* AppDelegate.swift */,
 				A1807D5A2234895100B8F4FF /* MainViewController.swift */,
 				A1807D5C2234895100B8F4FF /* Main.storyboard */,
@@ -69,13 +69,13 @@
 			path = SlidingView;
 			sourceTree = "<group>";
 		};
-		A1807D6E22348B4200B8F4FF /* SlidingView */ = {
+		A1807D6E22348B4200B8F4FF /* Sliding */ = {
 			isa = PBXGroup;
 			children = (
 				A1807D6F22348BB700B8F4FF /* MenuTableViewCell.swift */,
 				A1807D7022348BB700B8F4FF /* MenuTableViewCell.xib */,
 			);
-			path = SlidingView;
+			path = Sliding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
