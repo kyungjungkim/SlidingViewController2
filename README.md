@@ -1,10 +1,9 @@
 # SlidingViewController2
 
-Simple Example
---------------
+
 
 <img src="Screen Shot 3.png" align="left" hspace="10" vspace="10">
-
+<img src="Screen Shot 4.png" align="left" hspace="10" vspace="10">
 
         
         
