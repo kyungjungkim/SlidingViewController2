@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A114447D236FDFE40053F794 /* MenuTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114447B236FDFE40053F794 /* MenuTableViewHeaderCell.swift */; };
+		A114447E236FDFE40053F794 /* MenuTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A114447C236FDFE40053F794 /* MenuTableViewHeaderCell.xib */; };
 		A1807D592234895100B8F4FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1807D582234895100B8F4FF /* AppDelegate.swift */; };
 		A1807D5B2234895100B8F4FF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1807D5A2234895100B8F4FF /* MainViewController.swift */; };
 		A1807D5E2234895100B8F4FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1807D5C2234895100B8F4FF /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A114447B236FDFE40053F794 /* MenuTableViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewHeaderCell.swift; sourceTree = "<group>"; };
+		A114447C236FDFE40053F794 /* MenuTableViewHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewHeaderCell.xib; sourceTree = "<group>"; };
 		A1807D552234895100B8F4FF /* SlidingView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlidingView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1807D582234895100B8F4FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1807D5A2234895100B8F4FF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 		A1807D6E22348B4200B8F4FF /* Sliding */ = {
 			isa = PBXGroup;
 			children = (
+				A114447B236FDFE40053F794 /* MenuTableViewHeaderCell.swift */,
+				A114447C236FDFE40053F794 /* MenuTableViewHeaderCell.xib */,
 				A1807D6F22348BB700B8F4FF /* MenuTableViewCell.swift */,
 				A1807D7022348BB700B8F4FF /* MenuTableViewCell.xib */,
 			);
@@ -110,6 +116,7 @@
 				TargetAttributes = {
 					A1807D542234895100B8F4FF = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -136,6 +143,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A114447E236FDFE40053F794 /* MenuTableViewHeaderCell.xib in Resources */,
 				A1807D632234895200B8F4FF /* LaunchScreen.storyboard in Resources */,
 				A1807D602234895200B8F4FF /* Assets.xcassets in Resources */,
 				A1807D7222348BB700B8F4FF /* MenuTableViewCell.xib in Resources */,
@@ -151,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1807D5B2234895100B8F4FF /* MainViewController.swift in Sources */,
+				A114447D236FDFE40053F794 /* MenuTableViewHeaderCell.swift in Sources */,
 				A1807D592234895100B8F4FF /* AppDelegate.swift in Sources */,
 				A1807D7122348BB700B8F4FF /* MenuTableViewCell.swift in Sources */,
 			);
@@ -307,7 +316,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ProSoft.SlidingView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -325,7 +334,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ProSoft.SlidingView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

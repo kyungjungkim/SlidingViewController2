@@ -12,7 +12,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var isMenuOpen: Bool = false
     var menu: UITableView?
     var leftSwipeGesture: UISwipeGestureRecognizer?
-    var cell: MenuTableViewCell?
+    var cell: MenuTableViewHeaderCell?
+    var cell1: MenuTableViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         menu = UITableView()
         menu!.dataSource = self
         menu!.delegate = self
+        menu!.register(UINib(nibName: "MenuTableViewHeaderCell", bundle: nil), forCellReuseIdentifier: "MenuTableViewHeaderCell")
         menu!.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forCellReuseIdentifier: "MenuTableViewCell")
         menu!.frame = CGRect(x: -(self.view.frame.width - 100.0), y: 20.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 20.0)
         menu!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -37,7 +39,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func menuOpenBtnClick(_ sender: Any) {
         if (isMenuOpen == false) {
             UIView.animate(withDuration: 0.5, animations: {
-                self.menu!.frame = CGRect(x: 0.0, y: 20.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 20.0)
+                self.menu!.frame = CGRect(x: 0.0, y: 30.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 20.0)
             }, completion: { finished in
                 if (finished) {
                     self.cell!.uilGreetings.frame = CGRect(x: self.cell!.uilGreetings.frame.origin.x, y: self.cell!.uilGreetings.frame.origin.y - 20.0, width: self.cell!.uilGreetings.frame.width, height: self.cell!.uilGreetings.frame.height)
@@ -48,8 +50,26 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func swipeMenuClose() {
+        if (isMenuOpen == true) {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.menu!.frame = CGRect(x: -(self.view.frame.width - 100.0), y: 30.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 20.0)
+            }, completion: { finished in
+                if (finished) {
+                    self.cell!.uilGreetings.frame = CGRect(x: self.cell!.uilGreetings.frame.origin.x, y: self.cell!.uilGreetings.frame.origin.y + 20.0, width: self.cell!.uilGreetings.frame.width, height: self.cell!.uilGreetings.frame.height)
+                    
+                    self.isMenuOpen = false
+                }
+            })
+        }
+    }
+    
     
     // MARK: UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        60.0
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60.0
@@ -59,8 +79,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 1;
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        cell = (tableView.dequeueReusableCell(withIdentifier: "MenuTableViewHeaderCell") as! MenuTableViewHeaderCell)
+        
+        return cell!;
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        cell = (tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell)
+        cell1 = (tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell)
  
         /*
         if (isAll1Clicked && clickedSectionNum == 0) { // 전체버튼 클릭
@@ -89,21 +115,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     */
         
-        return cell!
-    }
-    
-    
-    func swipeMenuClose() {
-        if (isMenuOpen == true) {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.menu!.frame = CGRect(x: -(self.view.frame.width - 100.0), y: 20.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 20.0)
-            }, completion: { finished in
-                if (finished) {
-                    self.cell!.uilGreetings.frame = CGRect(x: self.cell!.uilGreetings.frame.origin.x, y: self.cell!.uilGreetings.frame.origin.y + 20.0, width: self.cell!.uilGreetings.frame.width, height: self.cell!.uilGreetings.frame.height)
-                    
-                    self.isMenuOpen = false
-                }
-            })
-        }
+        return cell1!
     }
 }
