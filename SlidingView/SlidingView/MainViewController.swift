@@ -14,6 +14,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var leftSwipeGesture: UISwipeGestureRecognizer?
     var cell: MenuTableViewHeaderCell?
     var cell1: MenuTableViewCell?
+    var isAll1: Bool = false
+    var isAll1Clicked: Bool = false
+    var clickedSectionNum: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
