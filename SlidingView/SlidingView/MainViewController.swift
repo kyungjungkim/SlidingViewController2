@@ -30,7 +30,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         menu!.frame = CGRect(x: -(self.view.frame.width - 100.0), y: 20.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 20.0)
         menu!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         menu!.backgroundColor = UIColor.lightGray
-        menu!.separatorStyle = .none
+        menu!.separatorStyle = .singleLine
         self.view.addSubview(menu!)
         
         // UISwipeGesture
@@ -78,19 +78,26 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 60.0
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1;
+        return 7
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         cell = (tableView.dequeueReusableCell(withIdentifier: "MenuTableViewHeaderCell") as! MenuTableViewHeaderCell)
         
-        return cell!;
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cell1 = (tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell)
  
+        if (1 <= indexPath.row) {
+            cell1?.uilGreetings.text = ""
+        }
         /*
         if (isAll1Clicked && clickedSectionNum == 0) { // 전체버튼 클릭
             if (isAll1) { // 선택.

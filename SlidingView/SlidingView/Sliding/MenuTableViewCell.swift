@@ -11,6 +11,7 @@ import UIKit
 class MenuTableViewCell: UITableViewCell {
 
     @IBOutlet weak var uilGreetings: UILabel!
+    @IBOutlet weak var uiBCheck: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
