@@ -30,7 +30,6 @@
                         <state key="highlighted" title="Highlighted"/>
                     </button>
                 </subviews>
-                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             </tableViewCellContentView>
             <connections>
                 <outlet property="uiBCheck" destination="3D1-Yu-fiV" id="zv7-zK-k3f"/>

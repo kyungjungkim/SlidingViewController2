@@ -16,7 +16,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var cell1: MenuTableViewCell?
     var isAll1: Bool = false
     var isAll1Clicked: Bool = false
-    var clickedSectionNum: Bool = false
+    var clickedSectionNum: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,25 +27,25 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         menu!.delegate = self
         menu!.register(UINib(nibName: "MenuTableViewHeaderCell", bundle: nil), forCellReuseIdentifier: "MenuTableViewHeaderCell")
         menu!.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forCellReuseIdentifier: "MenuTableViewCell")
-        menu!.frame = CGRect(x: -(self.view.frame.width - 100.0), y: 20.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 20.0)
+        menu!.frame = CGRect(x: -(self.view.frame.width - 100.0), y: 30.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 30.0)
         menu!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         menu!.backgroundColor = UIColor.lightGray
         menu!.separatorStyle = .singleLine
         self.view.addSubview(menu!)
         
         // UISwipeGesture
-        leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: Selector(("swipeMenuClose")))
-        leftSwipeGesture?.direction = .left
+        leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeMenuClose))
+        leftSwipeGesture!.direction = .left
         menu!.addGestureRecognizer(leftSwipeGesture!)
     }
     
     @IBAction func menuOpenBtnClick(_ sender: Any) {
         if (isMenuOpen == false) {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.menu!.frame = CGRect(x: 0.0, y: 30.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 20.0)
+            UIView.animate(withDuration: 0.8, animations: {
+                self.menu!.frame = CGRect(x: 0.0, y: 30.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 30.0)
             }, completion: { finished in
                 if (finished) {
-                    self.cell!.uilGreetings.frame = CGRect(x: self.cell!.uilGreetings.frame.origin.x, y: self.cell!.uilGreetings.frame.origin.y - 20.0, width: self.cell!.uilGreetings.frame.width, height: self.cell!.uilGreetings.frame.height)
+                    self.cell!.uilGreetings.frame = CGRect(x: self.cell!.uilGreetings.frame.origin.x, y: self.cell!.uilGreetings.frame.origin.y - 10.0, width: self.cell!.uilGreetings.frame.width, height: self.cell!.uilGreetings.frame.height)
                     
                     self.isMenuOpen = true
                 }
@@ -53,13 +53,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func swipeMenuClose() {
+    @objc func swipeMenuClose() {
         if (isMenuOpen == true) {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.menu!.frame = CGRect(x: -(self.view.frame.width - 100.0), y: 30.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 20.0)
+            UIView.animate(withDuration: 0.8, animations: {
+                self.menu!.frame = CGRect(x: -(self.view.frame.width - 100.0), y: 30.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 30.0)
             }, completion: { finished in
                 if (finished) {
-                    self.cell!.uilGreetings.frame = CGRect(x: self.cell!.uilGreetings.frame.origin.x, y: self.cell!.uilGreetings.frame.origin.y + 20.0, width: self.cell!.uilGreetings.frame.width, height: self.cell!.uilGreetings.frame.height)
+                    self.cell!.uilGreetings.frame = CGRect(x: self.cell!.uilGreetings.frame.origin.x, y: self.cell!.uilGreetings.frame.origin.y + 10.0, width: self.cell!.uilGreetings.frame.width, height: self.cell!.uilGreetings.frame.height)
                     
                     self.isMenuOpen = false
                 }
@@ -98,32 +98,31 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (1 <= indexPath.row) {
             cell1?.uilGreetings.text = ""
         }
-        /*
+        
         if (isAll1Clicked && clickedSectionNum == 0) { // 전체버튼 클릭
             if (isAll1) { // 선택.
-                [cell setSelected:YES animated:YES];
-                [selectedName addObject:cell.nameLbl.text];
-                [[isSectionSelected objectForKey:[NSNumber numberWithLong:indexPath.section]] isEqualToString:@"YES"];
+                //[cell1 setSelected:YES animated:YES];
+                //[selectedName addObject:cell.nameLbl.text];
+                //[[isSectionSelected objectForKey:[NSNumber numberWithLong:indexPath.section]] isEqualToString:@"YES"];
                 
-                if (indexPath.row == [sectionData count] - 1)   // 마지막 셀
-                    isAll1Clicked = NO;
+                //if (indexPath.row == [sectionData count] - 1)   // 마지막 셀
+                    //isAll1Clicked = NO;
                 
-                [menu layoutIfNeeded];
+                //[menu layoutIfNeeded];
                 
-                return cell;
+                //return cell1!;
             } else if (!isAll1) { // 해제.
-                [cell setSelected:NO animated:YES];
-                [selectedName removeObjectAtIndex:indexPath.row];
+                //[cell1 setSelected:NO animated:YES];
+                //[selectedName removeObjectAtIndex:indexPath.row];
                 
-                [[isSectionSelected objectForKey:[NSNumber numberWithLong:indexPath.section]] isEqualToString:@"NO"];
+                //[[isSectionSelected objectForKey:[NSNumber numberWithLong:indexPath.section]] isEqualToString:@"NO"];
                 
-                if (indexPath.row == [sectionData count] - 1)   // 마지막 셀
-                    isAll1Clicked = NO;
+                //if (indexPath.row == [sectionData count] - 1)   // 마지막 셀
+                    //isAll1Clicked = NO;
                 
-                [menu layoutIfNeeded];
+                //[menu layoutIfNeeded];
             }
         }
-    */
         
         return cell1!
     }
