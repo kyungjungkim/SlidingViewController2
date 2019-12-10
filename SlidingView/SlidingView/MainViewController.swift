@@ -18,6 +18,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var isAll1Clicked: Bool = false
     var clickedSectionNum: Int = 0
     
+    
+    @IBOutlet weak var uiScrollView: UIScrollView!
+    @IBOutlet weak var uiTableView1: UITableView!
+    @IBOutlet weak var uiTableView2: UITableView!
+    @IBOutlet weak var uiTableView3: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -37,6 +43,24 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeMenuClose))
         leftSwipeGesture!.direction = .left
         menu!.addGestureRecognizer(leftSwipeGesture!)
+        
+        
+        uiScrollView.contentSize = CGSize(width: uiScrollView.frame.width * 3, height: uiScrollView.frame.height);
+        
+        uiTableView1.frame.origin.x = 0
+        uiTableView1.frame.origin.y = 0
+        uiTableView1.frame.size.width = uiScrollView.frame.size.width
+        uiTableView1.frame.size.height = uiScrollView.frame.size.height
+        
+        uiTableView2.frame.origin.x = uiScrollView.frame.size.width
+        uiTableView2.frame.origin.y = 0
+        uiTableView2.frame.size.width = uiScrollView.frame.size.width
+        uiTableView2.frame.size.height = uiScrollView.frame.size.height
+        
+        uiTableView3.frame.origin.x = uiScrollView.frame.size.width * 2
+        uiTableView3.frame.origin.y = 0
+        uiTableView3.frame.size.width = uiScrollView.frame.size.width
+        uiTableView3.frame.size.height = uiScrollView.frame.size.height
     }
     
     @IBAction func menuOpenBtnClick(_ sender: Any) {
