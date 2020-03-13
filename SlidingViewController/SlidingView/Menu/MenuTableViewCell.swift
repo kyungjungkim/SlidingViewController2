@@ -8,10 +8,20 @@
 
 import UIKit
 
+protocol TableViewCellDelegate {
+    func clickedBtnCheckWithTag(tag: Int) -> Void
+}
+
 class MenuTableViewCell: UITableViewCell {
 
+    var delegate: TableViewCellDelegate!
+    
     @IBOutlet weak var uilGreetings: UILabel!
     @IBOutlet weak var uiBCheck: UIButton!
+    
+    @IBAction func clickedBtnCheck(_ sender: UIButton) {
+        self.delegate.clickedBtnCheckWithTag(tag: self.tag)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,15 +8,16 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HeaderViewCellDelegate, TableViewCellDelegate {
     var isMenuOpen: Bool = false
     var menu: UITableView?
     var leftSwipeGesture: UISwipeGestureRecognizer?
-    var cell: MenuTableViewHeaderCell?
+    var cell: MenuTableViewHeaderViewController?
     var cell1: MenuTableViewCell?
     var isAll1: Bool = false
-    var isAll1Clicked: Bool = false
+    var isAll1Clicked: Bool = true
     var clickedSectionNum: Int = 0
+    var m_tag: Int = 0
     
     
     @IBOutlet weak var uiScrollView: UIScrollView!
@@ -31,7 +32,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         menu = UITableView()
         menu!.dataSource = self
         menu!.delegate = self
-        menu!.register(UINib(nibName: "MenuTableViewHeaderCell", bundle: nil), forCellReuseIdentifier: "MenuTableViewHeaderCell")
         menu!.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forCellReuseIdentifier: "MenuTableViewCell")
         menu!.frame = CGRect(x: -(self.view.frame.width - 100.0), y: 30.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 30.0)
         menu!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -69,7 +69,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.menu!.frame = CGRect(x: 0.0, y: 30.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 30.0)
             }, completion: { finished in
                 if (finished) {
-                    self.cell!.uilGreetings.frame = CGRect(x: self.cell!.uilGreetings.frame.origin.x, y: self.cell!.uilGreetings.frame.origin.y - 10.0, width: self.cell!.uilGreetings.frame.width, height: self.cell!.uilGreetings.frame.height)
+                    self.cell!.uiBtnAll.frame = CGRect(x: self.cell!.uiBtnAll.frame.origin.x, y: self.cell!.uiBtnAll.frame.origin.y - 10.0, width: self.cell!.uiBtnAll.frame.width, height: self.cell!.uiBtnAll.frame.height)
                     
                     self.isMenuOpen = true
                 }
@@ -83,7 +83,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.menu!.frame = CGRect(x: -(self.view.frame.width - 100.0), y: 30.0, width: self.view.frame.width - 100.0, height: self.view.frame.height - 30.0)
             }, completion: { finished in
                 if (finished) {
-                    self.cell!.uilGreetings.frame = CGRect(x: self.cell!.uilGreetings.frame.origin.x, y: self.cell!.uilGreetings.frame.origin.y + 10.0, width: self.cell!.uilGreetings.frame.width, height: self.cell!.uilGreetings.frame.height)
+                    self.cell!.uiBtnAll.frame = CGRect(x: self.cell!.uiBtnAll.frame.origin.x, y: self.cell!.uiBtnAll.frame.origin.y + 10.0, width: self.cell!.uiBtnAll.frame.width, height: self.cell!.uiBtnAll.frame.height)
                     
                     self.isMenuOpen = false
                 }
@@ -111,43 +111,73 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        cell = (tableView.dequeueReusableCell(withIdentifier: "MenuTableViewHeaderCell") as! MenuTableViewHeaderCell)
+        cell = MenuTableViewHeaderViewController()
+        cell!.delegate = self
         
-        return cell!
+        return cell!.view
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cell1 = (tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell)
- 
+        cell1!.delegate = self
+        cell1!.tag = indexPath.row
+        
         if (1 <= indexPath.row) {
-            cell1?.uilGreetings.text = ""
+            cell1!.uilGreetings.text = ""
         }
         
         if (isAll1Clicked && clickedSectionNum == 0) { // 전체버튼 클릭
             if (isAll1) { // 선택.
-                //[cell1 setSelected:YES animated:YES];
-                //[selectedName addObject:cell.nameLbl.text];
-                //[[isSectionSelected objectForKey:[NSNumber numberWithLong:indexPath.section]] isEqualToString:@"YES"];
+                // [cell1 setSelected:YES animated:YES];
+                cell1!.uiBCheck.titleLabel!.text = "ON"
                 
                 //if (indexPath.row == [sectionData count] - 1)   // 마지막 셀
                     //isAll1Clicked = NO;
                 
-                //[menu layoutIfNeeded];
-                
-                //return cell1!;
+                menu!.layoutIfNeeded()
             } else if (!isAll1) { // 해제.
                 //[cell1 setSelected:NO animated:YES];
-                //[selectedName removeObjectAtIndex:indexPath.row];
+                cell1!.uiBCheck.titleLabel!.text = "OFF"
                 
-                //[[isSectionSelected objectForKey:[NSNumber numberWithLong:indexPath.section]] isEqualToString:@"NO"];
                 
-                //if (indexPath.row == [sectionData count] - 1)   // 마지막 셀
-                    //isAll1Clicked = NO;
-                
-                //[menu layoutIfNeeded];
+                menu!.layoutIfNeeded()
+            }
+        } else {
+            if (m_tag == indexPath.row) {
+                if (cell1!.uiBCheck.titleLabel!.text! == "OFF") {
+                    cell1!.uiBCheck.setTitle("ON", for: UIControl.State.normal)
+                    cell1!.uiBCheck.setTitle("ON", for: UIControl.State.highlighted)
+                    cell1!.uiBCheck.setTitle("ON", for: UIControl.State.selected)
+                    
+                    menu!.layoutIfNeeded()
+                } else {
+                    cell1!.uiBCheck.setTitle("OFF", for: UIControl.State.normal)
+                    cell1!.uiBCheck.setTitle("OFF", for: UIControl.State.highlighted)
+                    cell1!.uiBCheck.setTitle("OFF", for: UIControl.State.selected)
+                    
+                    menu!.layoutIfNeeded()
+                }
             }
         }
         
         return cell1!
+    }
+    
+    func clickedBtnAll() {
+        isAll1 = !isAll1
+        
+        isAll1Clicked = true
+        clickedSectionNum = 0
+        
+        menu!.reloadData()
+    }
+    
+    func clickedBtnCheckWithTag(tag: Int) {
+        print("tag: %ld", tag);
+        
+        isAll1Clicked = false
+        m_tag = tag
+        
+        menu!.reloadData()
     }
 }

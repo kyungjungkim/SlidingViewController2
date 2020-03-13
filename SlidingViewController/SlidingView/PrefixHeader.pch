@@ -1,0 +1,19 @@
+//
+//  PrefixHeader.pch
+//  SlidingView
+//
+//  Created by Kyungjung Kim on 2020/03/13.
+//  Copyright © 2020 prosoft. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+static var isAll1Clicked: Boolean
+static var clickedSectionNum: Int
+static var isAll: Booelan
+
+#endif /* PrefixHeader_pch */
