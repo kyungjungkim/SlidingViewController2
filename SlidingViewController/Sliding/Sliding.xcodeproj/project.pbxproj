@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1795A14248669B7006AA133 /* MenuTableViewHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1795A11248669B7006AA133 /* MenuTableViewHeaderViewController.swift */; };
+		A1795A15248669B7006AA133 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1795A12248669B7006AA133 /* MenuTableViewCell.swift */; };
 		A199450B23AD33FF00A83395 /* Sliding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A199450A23AD33FF00A83395 /* Sliding.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A1795A10248669B7006AA133 /* MenuTableViewHeaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuTableViewHeaderViewController.xib; path = Menu/MenuTableViewHeaderViewController.xib; sourceTree = SOURCE_ROOT; };
+		A1795A11248669B7006AA133 /* MenuTableViewHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableViewHeaderViewController.swift; path = Menu/MenuTableViewHeaderViewController.swift; sourceTree = SOURCE_ROOT; };
+		A1795A12248669B7006AA133 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableViewCell.swift; path = Menu/MenuTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		A1795A13248669B7006AA133 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuTableViewCell.xib; path = Menu/MenuTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		A199450723AD33FF00A83395 /* libSliding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSliding.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A199450A23AD33FF00A83395 /* Sliding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sliding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +63,10 @@
 		A199450923AD33FF00A83395 /* Sliding */ = {
 			isa = PBXGroup;
 			children = (
+				A1795A12248669B7006AA133 /* MenuTableViewCell.swift */,
+				A1795A13248669B7006AA133 /* MenuTableViewCell.xib */,
+				A1795A11248669B7006AA133 /* MenuTableViewHeaderViewController.swift */,
+				A1795A10248669B7006AA133 /* MenuTableViewHeaderViewController.xib */,
 				A199450A23AD33FF00A83395 /* Sliding.swift */,
 			);
 			path = Sliding;
@@ -120,7 +130,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1795A14248669B7006AA133 /* MenuTableViewHeaderViewController.swift in Sources */,
 				A199450B23AD33FF00A83395 /* Sliding.swift in Sources */,
+				A1795A15248669B7006AA133 /* MenuTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
